@@ -1,38 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,200&display=swap');
+
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  outline:none;
+  color: inherit;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+  /* background-image: url(https://images.unsplash.com/photo-1562396867-92979af50031?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80); */
+  background-size: cover;
+  background-repeat: no-repeat;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 50px;
+  flex: 1 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.infoMeteo{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 50px;
+}
+
+.btnLike{
+  display: block;  
+  position: relative;
+  border: none;
+  background: none;
+  margin: 10px;
+  cursor: pointer;
+}
+.btnLike i{
+  font-size: 2em;
+  transition: 300ms;
+}
+.btnLike .far{
+  color: gray;
+}
+.btnLike .fas{
+  color: crimson;
+}
+
+.btnLike .far:hover{
+  color: crimson;
+}
+
+.btnLike .fas:hover{
+  color: gray;
+}
+
+.itemCityLike{
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+.itemCityLike button{
+  width: 100px;
+  height: 35px;
+  background: crimson;
+  border: none;
+  margin: 3px 0;
   color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+.itemCityLike button:nth-child(odd){
+  background: #c12020;
 }
 
-.App-link {
-  color: #61dafb;
+.temp {
+  font-size: 4em;
+  font-weight: 800;
+  color: #595959;
+  font-size: 4em;
+}
+.temp.tmin{
+  color: deepskyblue;
+  font-size: 2em;
+}
+.temp.tmax{
+  color: crimson;
+  font-size: 2em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+form {
+  position: relative;
+}
+
+form input {
+  width: 300px;
+  border-radius: 30px;
+  border: none;
+  background-color: #f1f3f5;
+  padding: 15px 30px;
+  font-size: 1em;
+  font-weight: 300;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+}
+form input::placeholder {
+  color: #9d9d9d;
+}
+form button {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  right: 15px;
+  display: block;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+form button i{
+  color: #9d9d9d;
+  font-size: 2em;
+}
+
+
+.prev {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  width: 200px;
+}
+
+.prev p:nth-child(3) {
+  margin: 20px 0;
+}
+
+/* .prev.prevHeure {
+    visibility: hidden;
+} */
+
+.containerDataHour{
+  opacity: 0;
+  position: relative;
+}
+
+
+.containerPrev{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  z-index: 1000;
+}
+
+.blocMinMax{
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+  padding: 0 15px;
+  /* align-items: start; */
+}
+
+.containerDataHour {
+  margin-top: 50px;
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.containerDataHour .prev {
+  width: 200px;
+  text-align: center;
+}
+
+nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+nav ul li{
+  list-style: none;
+  padding: 15px 15px 15px 30px;
+  margin: 5px 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  background:#0fd5df;
+  font-size: 0.8em;
+  font-weight: 600;
+  transition: 300ms;
+}
+nav ul li:hover{
+  transform: translateX(10px)
+}
+
+.error {
+  margin-top: 100px;
+  color: crimson;
+  font-weight: 600;
+}
+
+.active {
+  background: #0E7C82;
+  color: #fff;
+}
+
+footer {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  flex-shrink: 0;
+  background:rgba(0, 0, 0, .2);
+  z-index: 1000;
+}
+
+/* .container::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  width: 90%;
+  height: 90%;
+  background-color: rgba(255, 255, 255, .5);
+} */
+
+.blocBack{
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  width: 90%;
+  height: 85%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, .5);
+
 }
